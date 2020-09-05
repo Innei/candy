@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-05 10:08:58
- * @LastEditTime: 2020-09-05 12:54:11
+ * @LastEditTime: 2020-09-05 14:19:45
  * @LastEditors: Innei
  * @FilePath: /candy/utils/collection.ts
  * @Coding with Love
@@ -10,6 +10,9 @@ export default class Collection<K extends string, V = unknown> extends Map<
   K,
   V
 > {
+  get tail() {
+    return [...this.values()][this.size - 1]
+  }
   slice(start: number, end: number) {
     if (start < 0 || start > end) {
       return []
