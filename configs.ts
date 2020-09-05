@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-05 09:27:38
- * @LastEditTime: 2020-09-05 18:27:27
+ * @LastEditTime: 2020-09-05 19:25:25
  * @LastEditors: Innei
  * @FilePath: /candy/configs.ts
  * @Coding with Love
@@ -82,7 +82,7 @@ const social: SocialLinkModel[] = [
   },
 ]
 export const configs = {
-  title: '静之森',
+  title: '糖果屋',
   description: '一个测试站点',
   keywords: ['blog'],
   menu,

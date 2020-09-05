@@ -1,5 +1,7 @@
 # Candy
 
+Demo: [Candy](https://candy-blond.vercel.app/)
+
 静态博客生成器, 最小化版本的 [Kami](https://github.com/mx-space/kami).
 
 A simple static space generator. Minified version [Kami](https://github.com/mx-space/kami).
