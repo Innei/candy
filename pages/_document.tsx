@@ -11,7 +11,7 @@
  *
  * @Author: Innei
  * @Date: 2020-04-29 17:27:02
- * @LastEditTime: 2020-09-05 17:10:05
+ * @LastEditTime: 2020-09-05 18:21:34
  * @LastEditors: Innei
  * @FilePath: /candy/pages/_document.tsx
  * @MIT
@@ -62,8 +62,8 @@ export default class MyDocument extends Document {
           <meta name="application-name" content={configs.title} />
           <meta name="apple-mobile-web-app-title" content={configs.title} />
           <meta name="msapplication-tooltip" content={configs.title} />
-          <meta name="theme-color" content="#27ae60" />
-          <meta name="msapplication-navbutton-color" content="#27ae60" />
+          <meta name="theme-color" content="#ffc107" />
+          <meta name="msapplication-navbutton-color" content="#ffc107" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
           <meta name="msapplication-starturl" content="/" />
@@ -78,10 +78,10 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             type="text/css"
           />
-          <link rel="shortcut icon" href="/custom-icon.svg" />
-          <link rel="icon" href="/custom-icon.svg" />
-          <link rel="apple-touch-icon" href="/custom-icon.svg" />
-          <link rel="sitemap" href="/sitemap.xml" />
+          <link rel="shortcut icon" href="/favicon.png" />
+          <link rel="icon" href="/favicon.png" />
+          <link rel="apple-touch-icon" href="/favicon.png" />
+          {/* <link rel="sitemap" href="/sitemap.xml" /> */}
         </Head>
 
         <body id={'app'} className="loading">

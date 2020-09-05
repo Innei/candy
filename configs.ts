@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-05 09:27:38
- * @LastEditTime: 2020-09-05 16:51:06
+ * @LastEditTime: 2020-09-05 18:27:27
  * @LastEditors: Innei
  * @FilePath: /candy/configs.ts
  * @Coding with Love
@@ -9,7 +9,6 @@
 
 import { faGithub, faQq, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import {
-  faBookOpen,
   faDotCircle,
   faFeatherAlt,
   faGlasses,
@@ -42,18 +41,18 @@ const menu: MenuModel[] = [
     title: '览',
     icon: faHistory,
     path: '/timeline',
-    subMenu: [
-      {
-        title: '生活',
-        icon: faFeatherAlt,
-        path: '/timeline?type=note',
-      },
-      {
-        title: '博文',
-        icon: faBookOpen,
-        path: '/timeline?type=post',
-      },
-    ],
+    // subMenu: [
+    //   {
+    //     title: '生活',
+    //     icon: faFeatherAlt,
+    //     path: '/timeline?type=note',
+    //   },
+    //   {
+    //     title: '博文',
+    //     icon: faBookOpen,
+    //     path: '/timeline?type=post',
+    //   },
+    // ],
   },
   // {
   //   title: '友',
@@ -95,7 +94,6 @@ export const configs = {
     url: 'http://www.beian.miit.gov.cn/',
   },
   travellings: true, // 开往
-  donate: 'https://afdian.net/@Innei',
   avatar:
     'https://avatars0.githubusercontent.com/u/41265413?s=460&u=8c14b9682794c353995029327f439d736571426e&v=4',
 }
