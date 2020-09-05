@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-05 09:33:40
- * @LastEditTime: 2020-09-05 16:41:48
+ * @LastEditTime: 2020-09-05 19:09:37
  * @LastEditors: Innei
  * @FilePath: /candy/core/fetch.ts
  * @Coding with Love
@@ -104,7 +104,7 @@ class Fetcher {
     return this.articles.get(slug)
   }
 
-  getPostsByPager({ page = 1, size = 10 } = {}): PagerResult {
+  getPostsByPager({ page = 1, size = this.articles.size } = {}): PagerResult {
     size = size || this.articles.size
     page = page || 1
     const totalPage = Math.ceil(this.articles.size / size)
