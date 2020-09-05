@@ -1,1 +1,0 @@
-{"pageProps":{"title":"折腾失败的新主题","slug":"折腾失败的新主题","created":"2019-01-25T04:58:00.000Z","modified":"2020-08-24T03:23:54.894Z","content":"\n记2019年1月25日\r\n\r\n博客从Next主题更换为更为简洁的polarbear\r\n\r\n因为太简洁了, 所以我想把原先的统计信息与评论系统加入.\r\n\r\n再折腾很久的layout, 甚至直接导入appid, 放入layout.swig还是失败了.\r\n\r\n所以说现在这个博客是空无一物.\r\n\r\n可能以后我会换回Next的吧."},"__N_SSG":true}
