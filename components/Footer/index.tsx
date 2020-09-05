@@ -1,4 +1,4 @@
-import { faNodeJs, faReact } from '@fortawesome/free-brands-svg-icons'
+import { faCandyCane } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useStore } from 'common/store'
 import dynamic from 'next/dynamic'
@@ -37,16 +37,11 @@ export const Footer: FC = observer(() => {
               </span>
             </p>
             <p>
-              Powered by <FontAwesomeIcon icon={faReact} />
-              <a
-                href="https://github.com/mx-space"
-                title={
-                  process.env.VERSION && '开发版本: ' + process.env.VERSION
-                }
-              >
-                {' mx-space '}
+              Powered by{' '}
+              <a href="https://github.com/Innei/candy">
+                <FontAwesomeIcon icon={faCandyCane} />
+                {' Candy '}
               </a>
-              <FontAwesomeIcon icon={faNodeJs} />.{' '}
               {!!configs.icp && !!configs.icp.name && !!configs.icp.url && (
                 <a href={configs.icp.url} target={'_blank'} rel={'noreferrer'}>
                   {configs.icp.name}

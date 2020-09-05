@@ -44,7 +44,7 @@ export default class Collection<K extends string, V = unknown> extends Map<
     return [...this.entries()].map(([, v]) => v)
   }
 
-  map<T = unknown>(cb: (value: unknown, key: K, index: number) => T) {
+  map<T = unknown>(cb: (value: V, key: K, index: number) => T) {
     const e = this.entries()
     let index = 0
     const arr: T[] = []
