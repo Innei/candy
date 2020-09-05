@@ -6,25 +6,48 @@ import configs from 'configs'
 import { BasicLayout } from 'layouts/BasicLayout'
 import throttle from 'lodash/throttle'
 import { LogoJsonLd, NextSeo, SocialProfileJsonLd } from 'next-seo'
+import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { Router } from 'next/router'
 import 'normalize.css'
 import React, { FC, useCallback, useState } from 'react'
 import useMount from 'react-use/lib/useMount'
 import useUnmount from 'react-use/lib/useUnmount'
 import { UAParser } from 'ua-parser-js'
+import Package from '../package.json'
 
 let _currentY = 0
 const Content: FC = (props) => {
   const [loading, setLoading] = useState(true)
   const { appStore: app } = useStore()
   useMount(() => {
+    printToConsole()
     setLoading(false)
     app.setLoading(false)
     checkBrowser()
     registerRouterEvents()
     registerEvent()
     initColorMode()
+
+    setPages()
   })
+  const setPages = useCallback(() => {
+    fetch('/data/pages.json').then((res) => {
+      res.json().then((json) => {
+        const pages = Object.values(json)
+
+        app.setPage(
+          pages.map((i: any) => ({
+            created: i.created,
+            modified: i.modified,
+            order: i.order,
+            slug: i.slug,
+            title: i.title,
+          })),
+        )
+      })
+    })
+  }, [])
+
   const registerEvent = useCallback(() => {
     const resizeHandler = throttle(() => {
       app.updateViewport()
@@ -160,7 +183,9 @@ const Content: FC = (props) => {
   )
 }
 
-export default function MyApp({ Component, pageProps, err }) {
+export default function MyApp(ctx: AppProps) {
+  const { Component, pageProps, err } = ctx
+
   return (
     <Content>
       <BasicLayout>
@@ -168,4 +193,29 @@ export default function MyApp({ Component, pageProps, err }) {
       </BasicLayout>
     </Content>
   )
+}
+
+function printToConsole() {
+  try {
+    const text = `
+    This Blog Powered By Mix Space.
+    --------
+    Stay hungry. Stay foolish. --Steve Jobs
+    `
+    document.documentElement.prepend(document.createComment(text))
+
+    // eslint-disable-next-line no-empty
+  } catch {
+  } finally {
+    console.log(
+      '%c Kico Style %c https://paugram.com ',
+      'color: #fff; margin: 1em 0; padding: 5px 0; background: #3498db;',
+      'margin: 1em 0; padding: 5px 0; background: #efefef;',
+    )
+    console.log(
+      `%c Candy ${Package.version} %c https://innei.ren `,
+      'color: #fff; margin: 1em 0; padding: 5px 0; background: #2980b9;',
+      'margin: 1em 0; padding: 5px 0; background: #efefef;',
+    )
+  }
 }

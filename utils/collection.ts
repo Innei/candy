@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-05 10:08:58
- * @LastEditTime: 2020-09-05 14:19:45
+ * @LastEditTime: 2020-09-05 16:40:36
  * @LastEditors: Innei
  * @FilePath: /candy/utils/collection.ts
  * @Coding with Love
@@ -10,6 +10,17 @@ export default class Collection<K extends string, V = unknown> extends Map<
   K,
   V
 > {
+  toObject() {
+    // @ts-ignore
+    const obj: Record<K, V> = {}
+    for (const [k, v] of this.entries()) {
+      obj[k] = v
+    }
+    return obj
+  }
+  toJSON() {
+    return JSON.stringify(this.toObject())
+  }
   get tail() {
     return [...this.values()][this.size - 1]
   }

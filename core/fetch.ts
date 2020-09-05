@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-05 09:33:40
- * @LastEditTime: 2020-09-05 14:42:43
+ * @LastEditTime: 2020-09-05 16:41:48
  * @LastEditors: Innei
  * @FilePath: /candy/core/fetch.ts
  * @Coding with Love
@@ -21,7 +21,12 @@ const rootDir = path.resolve(curDir, './_posts')
 class Fetcher {
   public articles = new Collection<string, PostStructure>()
   public notes = new Collection<string, NoteStructure>()
+
+  public pages = new Collection<string, PageStructure>()
   constructor() {
+    if (typeof window !== 'undefined') {
+      throw new Error('must in Node.JS runtime environment')
+    }
     this.init()
   }
 
@@ -36,6 +41,12 @@ class Fetcher {
     this.notes.clear()
     for (const note of notes) {
       this.notes.set(note.nid.toString(), note)
+    }
+
+    const pages = this.getAllPages()
+    this.pages.clear()
+    for (const page of pages) {
+      this.pages.uniqueSet(page.slug.toString(), page)
     }
   }
 
@@ -157,6 +168,44 @@ class Fetcher {
         }
       })
   }
+
+  getAllPages() {
+    const dir = this.resolvePostDir('pages')
+
+    const paths = this.getAllFilesInDir(dir)
+    const all: PageStructure[] = []
+
+    for (const path of paths) {
+      try {
+        const {
+          content,
+          created,
+          metadata,
+          modified,
+          stat,
+          title,
+        } = readMarkdownFile(path)
+        all.push({
+          title,
+          subtitle: metadata.subtitle || '',
+          slug: metadata.slug || title,
+          created: isValidDate(created) || stat.ctime.toISOString(),
+          modified: isValidDate(modified) || stat.mtime.toISOString(),
+          content,
+          order: metadata.order,
+        })
+      } catch {
+        continue
+      }
+    }
+    // asc
+    return all
+      .sort((a, b) => a.order - b.order)
+      .map((n, i) => ({
+        ...n,
+        order: i,
+      }))
+  }
 }
 
 export default new Fetcher()
@@ -188,4 +237,10 @@ export type NoteStructure = {
   nid: number
   hasNext: boolean
   hasPrev: boolean
+} & BaseStructure
+
+export type PageStructure = {
+  subtitle: string
+  order: number
+  slug: string
 } & BaseStructure

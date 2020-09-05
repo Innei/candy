@@ -106,3 +106,4 @@ dist
 out/
 .next
 _posts/
+public/data

@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-05 09:27:38
- * @LastEditTime: 2020-09-05 14:49:52
+ * @LastEditTime: 2020-09-05 16:51:06
  * @LastEditors: Innei
  * @FilePath: /candy/configs.ts
  * @Coding with Love
@@ -9,9 +9,11 @@
 
 import { faGithub, faQq, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import {
+  faBookOpen,
   faDotCircle,
   faFeatherAlt,
   faGlasses,
+  faHistory,
 } from '@fortawesome/free-solid-svg-icons'
 import { MenuModel, SocialLinkModel } from 'common/store/types'
 
@@ -36,23 +38,23 @@ const menu: MenuModel[] = [
     path: '/notes',
     icon: faFeatherAlt,
   },
-  // {
-  //   title: '览',
-  //   icon: faHistory,
-  //   path: '/timeline',
-  //   subMenu: [
-  //     {
-  //       title: '生活',
-  //       icon: faFeatherAlt,
-  //       path: '/timeline?type=note',
-  //     },
-  //     {
-  //       title: '博文',
-  //       icon: faBookOpen,
-  //       path: '/timeline?type=post',
-  //     },
-  //   ],
-  // },
+  {
+    title: '览',
+    icon: faHistory,
+    path: '/timeline',
+    subMenu: [
+      {
+        title: '生活',
+        icon: faFeatherAlt,
+        path: '/timeline?type=note',
+      },
+      {
+        title: '博文',
+        icon: faBookOpen,
+        path: '/timeline?type=post',
+      },
+    ],
+  },
   // {
   //   title: '友',
   //   icon: faUserFriends,
@@ -89,7 +91,7 @@ export const configs = {
   author: 'Innei',
   social,
   icp: {
-    name: '浙ICP备 20028356 号',
+    name: ' ',
     url: 'http://www.beian.miit.gov.cn/',
   },
   travellings: true, // 开往

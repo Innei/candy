@@ -1,14 +1,14 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-02 14:00:52
- * @LastEditTime: 2020-09-05 10:59:21
+ * @LastEditTime: 2020-09-05 15:56:38
  * @LastEditors: Innei
  * @FilePath: /candy/common/store/app.ts
  * @Coding with Love
  */
 import configs from 'configs'
 import { action, computed, observable } from 'mobx'
-import { MenuModel, ViewportRecord } from './types'
+import { MenuModel, PageModel, ViewportRecord } from './types'
 
 export default class AppStore {
   @observable menu: MenuModel[] = configs.menu as MenuModel[]
@@ -25,7 +25,6 @@ export default class AppStore {
     meta: '',
     show: false,
   }
-  @observable noteNid: null | number = null
 
   @action updatePosition(direction: 'up' | 'down') {
     if (typeof document !== 'undefined') {
@@ -55,20 +54,20 @@ export default class AppStore {
     this.menu = menu
   }
 
-  // @action setPage(pages: PageModel[]) {
-  // const homeMenu = this.menu.find((menu) => menu.type === 'Home')
-  // const models: MenuModel[] = pages.map((page) => {
-  //   const { title, _id, slug } = page
-  //   return {
-  //     title,
-  //     _id,
-  //     path: '/[page]',
-  //     as: '/' + slug,
-  //     type: 'Page',
-  //   }
-  // })
-  // homeMenu?.subMenu!.push(...models)
-  // }
+  @action setPage(pages: PageModel[]) {
+    const homeMenu = this.menu.find((menu) => menu.type === 'Home')
+    const models: MenuModel[] = pages.map((page) => {
+      const { title, slug } = page
+      return {
+        title,
+
+        path: '/[page]',
+        as: '/' + slug,
+        type: 'Page',
+      }
+    })
+    homeMenu?.subMenu!.push(...models)
+  }
 
   @action updateViewport() {
     const innerHeight = window.innerHeight
@@ -94,10 +93,6 @@ export default class AppStore {
       wider: window.innerWidth > 1024 && window.innerWidth < 1920,
       widest: window.innerWidth >= 1920,
     }
-  }
-
-  @action setLastestNoteNid(nid: number) {
-    this.noteNid = nid
   }
 
   @computed get isPadOrMobile() {

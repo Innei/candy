@@ -11,17 +11,43 @@
  *
  * @Author: Innei
  * @Date: 2020-04-29 17:27:02
- * @LastEditTime: 2020-09-05 13:49:29
+ * @LastEditTime: 2020-09-05 17:10:05
  * @LastEditors: Innei
  * @FilePath: /candy/pages/_document.tsx
  * @MIT
  */
 
+import configs from 'configs'
+import { Core } from 'core'
+import { resolve } from 'path'
+import { mkdirSync, writeFileSync } from 'fs'
 import Document, { Head, Main, NextScript } from 'next/document'
 
+const writeJson = (filename: string, data: string) => {
+  mkdirSync(resolve(process.cwd(), './public/data/'), { recursive: true })
+  writeFileSync(
+    resolve(process.cwd(), './public/data/' + filename + '.json'),
+    data,
+    {
+      encoding: 'utf-8',
+    },
+  )
+}
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
+    const pages = Core.fetcher.pages.toJSON()
+    const notes = Core.fetcher.notes.toJSON()
+    const posts = Core.fetcher.articles.toJSON()
+    const total = {
+      pages,
+      notes,
+      posts,
+    }
+    for (const [k, v] of Object.entries(total)) {
+      writeJson(k, v)
+    }
+    writeJson('raw', JSON.stringify(total))
     return { ...initialProps }
   }
   render() {
@@ -33,9 +59,9 @@ export default class MyDocument extends Document {
 
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="application-name" content="静かな森" />
-          <meta name="apple-mobile-web-app-title" content="静かな森" />
-          <meta name="msapplication-tooltip" content="静かな森" />
+          <meta name="application-name" content={configs.title} />
+          <meta name="apple-mobile-web-app-title" content={configs.title} />
+          <meta name="msapplication-tooltip" content={configs.title} />
           <meta name="theme-color" content="#27ae60" />
           <meta name="msapplication-navbutton-color" content="#27ae60" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black" />

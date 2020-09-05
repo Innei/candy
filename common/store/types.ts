@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-06-25 15:03:16
- * @LastEditTime: 2020-09-05 11:19:58
+ * @LastEditTime: 2020-09-05 15:54:24
  * @LastEditors: Innei
  * @FilePath: /candy/common/store/types.ts
  * @Coding with Love
@@ -12,6 +12,14 @@ import ActionStore from './action'
 import AppStore from './app'
 import PageStore from './pages'
 import SocialStore from './social'
+
+export interface PageModel {
+  order: number
+  created: string
+  modified: string
+  title: string
+  slug: string
+}
 
 export declare enum LayoutType {
   Post,
