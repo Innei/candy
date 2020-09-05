@@ -2,7 +2,7 @@
   "name": "candy",
   "license": "GPL v3",
   "private": false,
-  "version": "0.1.0",
+  "version": "1.0.0-rc",
   "scripts": {
     "start": "cross-env NODE_ENV=development next dev -p 2233",
     "prebuild": "rimraf .next",
