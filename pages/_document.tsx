@@ -11,7 +11,7 @@
  *
  * @Author: Innei
  * @Date: 2020-04-29 17:27:02
- * @LastEditTime: 2020-09-05 18:21:34
+ * @LastEditTime: 2021-01-23 20:41:32
  * @LastEditors: Innei
  * @FilePath: /candy/pages/_document.tsx
  * @MIT
@@ -36,19 +36,24 @@ const writeJson = (filename: string, data: string) => {
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
-    const pages = Core.fetcher.pages.toJSON()
-    const notes = Core.fetcher.notes.toJSON()
-    const posts = Core.fetcher.articles.toJSON()
-    const total = {
-      pages,
-      notes,
-      posts,
+
+    try {
+      const pages = Core.fetcher.pages.toJSON()
+      const notes = Core.fetcher.notes.toJSON()
+      const posts = Core.fetcher.articles.toJSON()
+      const total = {
+        pages,
+        notes,
+        posts,
+      }
+      for (const [k, v] of Object.entries(total)) {
+        writeJson(k, v)
+      }
+      writeJson('raw', JSON.stringify(total))
+      return { ...initialProps }
+    } catch {
+      throw new Error('parsing error, please check _post folder.')
     }
-    for (const [k, v] of Object.entries(total)) {
-      writeJson(k, v)
-    }
-    writeJson('raw', JSON.stringify(total))
-    return { ...initialProps }
   }
   render() {
     return (

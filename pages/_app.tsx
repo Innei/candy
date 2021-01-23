@@ -88,7 +88,10 @@ const Content: FC = (props) => {
           ArrayMethods.every((m) => Reflect.has(Array.prototype, m))
         ) ||
         !window.requestAnimationFrame ||
-        !window.Proxy
+        !window.Proxy ||
+        typeof globalThis === 'undefined' ||
+        typeof Set === 'undefined' ||
+        typeof Map === 'undefined'
       ) {
         return true
       }
@@ -96,7 +99,9 @@ const Content: FC = (props) => {
       return false
     })()
     if (isOld) {
-      message.warn('欧尼酱, 乃的浏览器太老了, 更新一下啦（o´ﾟ□ﾟ`o）')
+      const msg = '欧尼酱, 乃的浏览器太老了, 更新一下啦（o´ﾟ□ﾟ`o）'
+      alert(msg)
+      message.warn(msg, Infinity)
       class BrowserTooOldError extends Error {
         constructor() {
           const { name: osName, version: osVersion } = parser.getOS()
@@ -109,6 +114,7 @@ const Content: FC = (props) => {
       throw new BrowserTooOldError()
     }
   }, [])
+
   useUnmount(() => {
     window.onresize = null
     document.removeEventListener('scroll', handleScroll)
