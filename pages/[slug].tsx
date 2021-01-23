@@ -39,7 +39,7 @@ const Page: NextPage<PageStructure> = (props) => {
         description={RemoveMarkdown(text).slice(0, 100).replace('\n', '')}
       />
 
-      <Markdown value={text} escapeHtml={false} showTOC />
+      <Markdown value={text} escapeHtml={false} toc />
     </ArticleLayout>
   )
 }

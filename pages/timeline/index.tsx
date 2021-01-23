@@ -108,7 +108,7 @@ const TimeLineView: NextPage<TimeLineViewProps> = (props) => {
       <SEO title={'时间线'} />
       {Array.from(sortedMap).map(([year, value], j) => {
         return (
-          <article className="post-content paul-note article-list" key={year}>
+          <article className="post-content kami-note article-list" key={year}>
             <div className="note-item">
               <QueueAnim delay={getDelayTime(year)} type={'bottom'}>
                 <h1 key={1}>{year}</h1>

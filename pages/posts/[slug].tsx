@@ -42,7 +42,7 @@ export const PostView: NextPage<PostStructure> = (props) => {
     setCopyright({
       date: dayjs(props.modified).format('YYYY年MM月DD日 H:mm'),
       title,
-      link: new URL(location.pathname, configs.url).toString(),
+      link: new URL(location.pathname, configs.url).toString() + '.html',
     })
   }, [props, title])
   const router = useRouter()
@@ -65,7 +65,7 @@ export const PostView: NextPage<PostStructure> = (props) => {
 
       <OutdateNotice time={props.modified} />
 
-      <Markdown value={content} escapeHtml={false} showTOC={true} />
+      <Markdown value={content} escapeHtml={false} toc />
 
       <Copyright {...copyrightInfo} />
     </ArticleLayout>

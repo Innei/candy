@@ -9,7 +9,7 @@ import { LogoJsonLd, NextSeo, SocialProfileJsonLd } from 'next-seo'
 import { AppProps } from 'next/dist/next-server/lib/router/router'
 import { Router } from 'next/router'
 import 'normalize.css'
-import React, { FC, useCallback, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import useMount from 'react-use/lib/useMount'
 import useUnmount from 'react-use/lib/useUnmount'
 import { UAParser } from 'ua-parser-js'
@@ -26,7 +26,6 @@ const Content: FC = (props) => {
     checkBrowser()
     registerRouterEvents()
     registerEvent()
-    initColorMode()
 
     setPages()
   })
@@ -114,24 +113,42 @@ const Content: FC = (props) => {
     window.onresize = null
     document.removeEventListener('scroll', handleScroll)
   })
-  const initColorMode = useCallback(() => {
+
+  useEffect(() => {
     const getColormode = <T extends { matches: boolean }>(e: T) => {
       app.colorMode = e.matches ? 'dark' : 'light'
       return app.colorMode
     }
-    app.colorMode = getColormode(
-      window.matchMedia('(prefers-color-scheme: dark)'),
-    )
+
+    const getMediaType = <T extends { matches: boolean }>(e: T) => {
+      app.mediaType = e.matches ? 'screen' : 'print'
+      return app.mediaType
+    }
+    getColormode(window.matchMedia('(prefers-color-scheme: dark)'))
+    getMediaType(window.matchMedia('screen'))
+    const cb1 = (e: MediaQueryListEvent): void => {
+      if (app.autoToggleColorMode) {
+        getColormode(e)
+      }
+    }
+    const cb2 = (e: MediaQueryListEvent): void => {
+      getMediaType(e)
+    }
     try {
       window
         .matchMedia('(prefers-color-scheme: dark)')
-        .addEventListener('change', (e) => {
-          if (app.autoToggleColorMode) {
-            getColormode(e)
-          }
-        })
+        .addEventListener('change', cb1)
+
+      window.matchMedia('screen').addEventListener('change', cb2)
       // eslint-disable-next-line no-empty
     } catch {}
+
+    return () => {
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', cb1)
+      window.matchMedia('screen').removeEventListener('change', cb2)
+    }
   }, [])
 
   const registerRouterEvents = useCallback(() => {

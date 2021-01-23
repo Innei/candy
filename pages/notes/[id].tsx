@@ -127,13 +127,14 @@ const NoteView: NextPage<NoteStructure> = observer((props) => {
         <Markdown
           value={text}
           escapeHtml={false}
+          toc
           renderers={{ text: renderLines }}
         />
 
         <Action {...actions} />
 
         {(!!hasNext || !!hasPrev) && (
-          <section className="paul-more">
+          <section className="kami-more">
             {!!hasNext && (
               <button
                 className="btn green"

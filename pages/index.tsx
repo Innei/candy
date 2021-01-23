@@ -19,7 +19,7 @@ const IndexView: NextPage<{
   const name = configs.author
   return (
     <main>
-      <section className="paul-intro">
+      <section className="kami-intro">
         <div className="intro-avatar ">
           <img src={configs.avatar} alt={name} style={{ width: '100%' }} />
         </div>
@@ -60,7 +60,7 @@ const IndexView: NextPage<{
         </div>
       </section>
 
-      <section className="paul-news" style={{ minHeight: '34rem' }}>
+      <section className="kami-news" style={{ minHeight: '34rem' }}>
         <QueueAnim
           className="demo-content"
           delay={1200}

@@ -1,7 +1,7 @@
 /*
  * @Author: Innei
  * @Date: 2020-09-02 14:00:52
- * @LastEditTime: 2020-09-05 15:56:38
+ * @LastEditTime: 2021-01-23 20:23:02
  * @LastEditors: Innei
  * @FilePath: /candy/common/store/app.ts
  * @Coding with Love
@@ -19,6 +19,8 @@ export default class AppStore {
 
   @observable autoToggleColorMode = true
   @observable colorMode: 'light' | 'dark' = 'light'
+
+  @observable mediaType: 'screen' | 'print' = 'screen'
 
   @observable headerNav = {
     title: '',

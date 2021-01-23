@@ -25,7 +25,7 @@ const Post: NextPage<PagerResult> = observer((props) => {
     <ArticleLayout>
       <SEO title={'博文'} />
 
-      <article className="paul-note">
+      <article className="kami-note">
         {posts.map((post) => {
           const { slug, content, created, title } = post
 
@@ -43,7 +43,7 @@ const Post: NextPage<PagerResult> = observer((props) => {
       </article>
 
       {
-        <section className="paul-more">
+        <section className="kami-more">
           {page.hasPrev && (
             <button
               className="btn brown"
