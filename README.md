@@ -1,6 +1,6 @@
 # Candy
 
-Demo: [Candy](https://candy-blond.vercel.app/)
+Demo: [Candy](https://candy-git-demo.innei.vercel.app/)
 
 静态博客生成器, 最小化版本的 [Kami](https://github.com/mx-space/kami).
 
@@ -25,13 +25,17 @@ Yarn > 1.19
 
 `notes` 是放日记的
 
+`pages` 是存放独立页面的
+
 只支持 YAML Markdown 格式.
 
 The `_posts` folder in the root directory is for posts.
 
 The `articles` folder is for blog posts.
 
-`notes` is for diaries.
+The `notes` folder is for diaries.
+
+The `pages` folder is for separate page.
 
 Only YAML Markdown format is supported.
 
