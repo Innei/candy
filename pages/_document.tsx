@@ -112,7 +112,7 @@ export default class MyDocument extends Document {
             }}
           ></script>
         </body>
-      </candy>
+      </Html>
     )
   }
 }
