@@ -21,7 +21,7 @@ import configs from 'configs'
 import { Core } from 'core'
 import { resolve } from 'path'
 import { mkdirSync, writeFileSync } from 'fs'
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head, Html, Main, NextScript } from "next/document";
 
 const writeJson = (filename: string, data: string) => {
   mkdirSync(resolve(process.cwd(), './public/data/'), { recursive: true })
