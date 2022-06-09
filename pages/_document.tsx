@@ -57,7 +57,7 @@ export default class MyDocument extends Document {
   }
   render() {
     return (
-      <html>
+      <Html>
         <Head lang={'zh-cn'}>
           <meta charSet="UTF-8" />
           {/* <link rel="manifest" href="/manifest.json" /> */}
@@ -112,7 +112,7 @@ export default class MyDocument extends Document {
             }}
           ></script>
         </body>
-      </html>
+      </Html>
     )
   }
 }
