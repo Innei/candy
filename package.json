@@ -76,7 +76,7 @@
     "@types/react-syntax-highlighter": "11.0.5",
     "@types/remove-markdown": "0.1.1",
     "@types/ua-parser-js": "0.7.35",
-    "@types/validator": "13.1.0",
+    "@types/validator": "13.1.4",
     "@typescript-eslint/eslint-plugin": "4.14.0",
     "@typescript-eslint/parser": "4.14.0",
     "babel-plugin-import": "1.13.3",
