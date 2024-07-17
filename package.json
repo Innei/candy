@@ -63,7 +63,7 @@
     "@babel/core": "7.12.17",
     "@babel/plugin-proposal-decorators": "7.12.13",
     "@babel/preset-env": "7.12.17",
-    "@next/bundle-analyzer": "9.5.3",
+    "@next/bundle-analyzer": "9.5.5",
     "@types/classnames": "2.2.10",
     "@types/inflection": "1.5.28",
     "@types/js-cookie": "2.2.6",
