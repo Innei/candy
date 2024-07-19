@@ -57,7 +57,7 @@
     "remove-markdown": "0.3.0",
     "sass": "1.26.11",
     "sitemap": "6.2.0",
-    "ua-parser-js": "0.7.33"
+    "ua-parser-js": "0.7.38"
   },
   "devDependencies": {
     "@babel/core": "7.12.17",
@@ -75,7 +75,7 @@
     "@types/react-lazyload": "2.6.0",
     "@types/react-syntax-highlighter": "11.0.5",
     "@types/remove-markdown": "0.1.1",
-    "@types/ua-parser-js": "0.7.35",
+    "@types/ua-parser-js": "0.7.39",
     "@types/validator": "13.1.4",
     "@typescript-eslint/eslint-plugin": "4.14.2",
     "@typescript-eslint/parser": "4.14.2",
