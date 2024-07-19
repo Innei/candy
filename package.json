@@ -48,7 +48,7 @@
     "rc-texty": "0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-intersection-observer": "8.31.0",
+    "react-intersection-observer": "8.31.1",
     "react-lazy-images": "1.1.0",
     "react-markdown": "4.3.1",
     "react-medium-image-zoom": "4.3.1",
