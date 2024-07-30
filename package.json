@@ -60,9 +60,9 @@
     "ua-parser-js": "0.7.38"
   },
   "devDependencies": {
-    "@babel/core": "7.12.17",
-    "@babel/plugin-proposal-decorators": "7.12.13",
-    "@babel/preset-env": "7.12.17",
+    "@babel/core": "7.25.2",
+    "@babel/plugin-proposal-decorators": "7.24.7",
+    "@babel/preset-env": "7.25.2",
     "@next/bundle-analyzer": "9.5.5",
     "@types/classnames": "2.2.11",
     "@types/inflection": "1.5.28",
